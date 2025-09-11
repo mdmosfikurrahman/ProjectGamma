@@ -1,4 +1,3 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectGamma.Application.Dto.Request;
 using ProjectGamma.Application.Services;
@@ -9,8 +8,8 @@ namespace ProjectGamma.WebAPI.Controllers;
 // [Authorize]
 [ApiVersion("1.0")]
 [ApiVersion("2.0")]
-[Route("api/v{version:apiVersion}/airlines")]
-public class AirlinesController(IAirlineService service) : ControllerBase
+[Route("api/v{version:apiVersion}/attractions")]
+public class AttractionsController(IAttractionService service) : ControllerBase
 {
     [HttpGet]
     [MapToApiVersion("1.0")]
@@ -22,6 +21,6 @@ public class AirlinesController(IAirlineService service) : ControllerBase
 
     [HttpPost]
     [MapToApiVersion("2.0")]
-    public async Task<IActionResult> Create([FromBody] AirlineRequest request) =>
+    public async Task<IActionResult> Create([FromBody] AttractionRequest request) =>
         Ok(await service.CreateAsync(request));
 }

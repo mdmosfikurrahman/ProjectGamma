@@ -34,8 +34,8 @@ public static class StartupConfiguration
         services.AddSwaggerGen();
         services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
-        services.AddSingleton<IAirlineService, AirlineService>();
-        services.AddSingleton<IAirportService, AirportService>();
+        services.AddSingleton<IHotelService, HotelService>();
+        services.AddSingleton<IAttractionService, AttractionService>();
 
         return services;
     }
