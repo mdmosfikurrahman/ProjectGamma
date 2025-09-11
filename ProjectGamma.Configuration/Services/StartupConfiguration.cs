@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using ProjectGamma.Application.Services;
+using ProjectGamma.Configuration.Security;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ProjectGamma.Configuration.Services;
@@ -37,6 +38,11 @@ public static class StartupConfiguration
         services.AddSingleton<IHotelService, HotelService>();
         services.AddSingleton<IAttractionService, AttractionService>();
 
+        
+        services.AddAlphaJwtAuthentication(config, requireHttpsMetadata: false);
+
+        services.AddAuthorization();
+        
         return services;
     }
 
@@ -57,6 +63,8 @@ public static class StartupConfiguration
                     }
                 );
             }
+            
+            options.AddBearerSecurity();
         }
     }
 }
