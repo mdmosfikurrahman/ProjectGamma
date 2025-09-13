@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +16,11 @@ public static class StartupConfiguration
 {
     public static IServiceCollection AddStartupServices(this IServiceCollection services, IConfiguration config)
     {
-        services.AddControllers();
+        services.AddControllers(options =>
+        {
+            options.Filters.Add(new AuthorizeFilter());
+            options.Conventions.Insert(0, new RoutePrefixConvention(new RouteAttribute("beta/api")));
+        });
 
         services.AddApiVersioning(options =>
         {

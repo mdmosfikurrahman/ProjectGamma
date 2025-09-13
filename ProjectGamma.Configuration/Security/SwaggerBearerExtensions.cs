@@ -4,9 +4,6 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ProjectGamma.Configuration.Security;
 
-/// <summary>
-/// Reusable Swagger bearer security helper. Call from AddSwaggerGen(...)
-/// </summary>
 public static class SwaggerBearerExtensions
 {
     public static void AddBearerSecurity(this SwaggerGenOptions options)
