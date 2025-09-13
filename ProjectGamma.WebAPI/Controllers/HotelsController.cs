@@ -9,7 +9,7 @@ namespace ProjectGamma.WebAPI.Controllers;
 [Authorize]
 [ApiVersion("1.0")]
 [ApiVersion("2.0")]
-[Route("v{version:apiVersion}/hotels")]
+[Route("api/v{version:apiVersion}/hotels")]
 public class HotelsController(IHotelService service) : ControllerBase
 {
     [HttpGet]

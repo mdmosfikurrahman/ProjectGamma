@@ -19,7 +19,6 @@ public static class StartupConfiguration
         services.AddControllers(options =>
         {
             options.Filters.Add(new AuthorizeFilter());
-            options.Conventions.Insert(0, new RoutePrefixConvention(new RouteAttribute("beta/api")));
         });
 
         services.AddApiVersioning(options =>
